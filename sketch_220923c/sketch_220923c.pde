@@ -36,10 +36,10 @@ void setup() {
   size(800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
-  score=0;
+
   hs=score;
-  tm=1000;
-  
+  reset();
+
   minim =new Minim(this);
   sf= minim.loadFile("FAILURE.wav");
   sm= minim.loadFile("MUSIC.mp3");
@@ -70,4 +70,33 @@ void draw() {
   } else {
     println("mode Error:Mode cannot be resolved");
   }
+}
+
+void reset() {
+  score=0;
+  tm=1000;
+}
+
+void correct() {
+  score=score+1;
+  ss.play();
+  ss.rewind();
+  rnm=(int) random(0, 6);
+  rc=(int) random(0, 6);
+  eq=(float) random(0, 1);
+  tm=1000;
+  if (eq>0.5) {
+    rnm=rc;
+  } else {
+    if (eq<=0.5) {
+      rnm=rc+1;
+    }
+  }
+}
+
+void fail() {
+
+  sf.play();
+  sf.rewind();
+  mode=GAMEOVER;
 }

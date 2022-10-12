@@ -63,45 +63,22 @@ void  cgame() {
 
     if (rnm == rc) {
       if (trect(200, 300, 400, 600)) {
-        score=score+1;
-        ss.play();
-        ss.rewind();
-        rnm=(int) random(0, 6);
-        rc=(int) random(0, 6);
-        eq=(float) random(0, 1);
-        tm=1000;
-        if (eq>0.5) {
-          rnm=rc;
-        } else {
-          if (eq<=0.5) {
-            rnm=rc+1;
-          }
-       
+       correct();
       }
-    }
-  } else if (rnm!=rc) {
+      if (trect(600, 300, 400, 600)) {
+      fail();
+      }
+    
+    
+  }else if (rnm!=rc) {
     if (trect(600, 300, 400, 600)) {
-      score=score+1;
-      ss.play();
-      ss.rewind();
-      rnm=(int) random(0, 6);
-      rc=(int) random(0, 6);
-      eq=(float) random(0, 1);
-      tm=1000;
+     correct();
 
-      if (eq>0.5) {
-        rnm=rc;
-      } else {
-        if (eq<=0.5) {
-          rnm=rc+1;
-        }
-      }
+     
     }
 
     if (trect(200, 300, 400, 600)) {
-      sf.play();
-      sf.rewind();
-      mode=GAMEOVER;
+      fail();
     }
   }
 }
